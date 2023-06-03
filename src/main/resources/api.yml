@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: Swagger Product - OpenAPI 3.0
+  description: |-
+    This is a sample Product Server based on the OpenAPI 3.0 specification
+  contact:
+    email: grcdevnation@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://localhost:9000
+tags:
+  - name: product
+    description: Explore different kind of product
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /get-product-type:
+    get:
+      tags:
+        - pet
+      summary: Get list of product type
+      description:  Get list of product type
+      operationId: getProductType
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductTypeSuccessResponse'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+components:
+  schemas:
+    ProductTypeSuccessResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 10
+        name:
+          type: string
+          example: fashion wear
+        offer:
+          type: integer
+          example: 10
