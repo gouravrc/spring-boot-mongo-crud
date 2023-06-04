@@ -41,8 +41,35 @@ paths:
           description: Pet not found
         '405':
           description: Validation exception
+  /product-type:
+    post:
+      summary: create new product type
+      description: create new product type
+      operationId: createProductType
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductType'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductType'
 components:
   schemas:
+    ProductType:
+      type: object
+      properties:
+        name:
+          type: string
+          example: fashion wear
+        offer:
+          type: integer
+          example: 10
     ProductTypeSuccessResponse:
       type: object
       properties:
