@@ -21,12 +21,39 @@ tags:
       description: Find out more
       url: http://swagger.io
 paths:
+  /get-product-type-by-id:
+    get:
+      tags:
+        - get by product id
+      summary: Get product details by specific product id
+      description: Get by id
+      operationId: getProductTypeById
+      parameters:
+        - name: id
+          in: path
+          description: ID of product
+          required: true
+          schema:
+            type: String
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductTypeSuccessResponse'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
   /get-product-type:
     get:
       tags:
-        - pet
+        - get all
       summary: Get list of product type
-      description:  Get list of product type
+      description:  Get all list of product type
       operationId: getProductType
       responses:
         '200':
@@ -38,7 +65,7 @@ paths:
         '400':
           description: Invalid ID supplied
         '404':
-          description: Pet not found
+          description: Product not found
         '405':
           description: Validation exception
   /product-type:
