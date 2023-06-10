@@ -1,7 +1,7 @@
 package com.spring.product.service.impl;
 
 import com.spring.product.entity.ProductTypeEntity;
-import com.spring.product.integrator.ProductTypeIntegrator;
+import com.spring.product.integrator.ProductTypeReadIntegrator;
 import com.spring.product.model.ProductTypeSuccessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductTypeReadService implements com.spring.product.service.ProductTypeReadService {
+public class ProductTypeReadServiceImpl implements com.spring.product.service.ProductTypeReadService {
 
     @Autowired
-    ProductTypeIntegrator productTypeIntegrator;
+    ProductTypeReadIntegrator productTypeIntegrator;
 
 
     @Override

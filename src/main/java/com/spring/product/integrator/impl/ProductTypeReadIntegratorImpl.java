@@ -1,18 +1,16 @@
 package com.spring.product.integrator.impl;
 
 import com.spring.product.entity.ProductTypeEntity;
-import com.spring.product.integrator.ProductTypeIntegrator;
-import com.spring.product.model.ProductTypeSuccessResponse;
+import com.spring.product.integrator.ProductTypeReadIntegrator;
 import com.spring.product.repository.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class ProductTypeIntegratorImpl implements ProductTypeIntegrator {
+public class ProductTypeReadIntegratorImpl implements ProductTypeReadIntegrator {
 
     @Autowired
     ProductTypeRepository productTypeRepository;

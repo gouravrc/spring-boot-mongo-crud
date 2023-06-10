@@ -1,7 +1,7 @@
 package com.spring.product.integrator.impl;
 
 import com.spring.product.entity.ProductTypeEntity;
-import com.spring.product.integrator.ProductTypeCreateIntegrator;
+import com.spring.product.integrator.ProductTypeWriteIntegrator;
 import com.spring.product.model.ProductType;
 import com.spring.product.repository.ProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
-public class ProductTypeCreateIntegratorImpl implements ProductTypeCreateIntegrator {
+public class ProductTypeWriteIntegratorImpl implements ProductTypeWriteIntegrator {
 
     @Autowired
     ProductTypeRepository productTypeRepository;
