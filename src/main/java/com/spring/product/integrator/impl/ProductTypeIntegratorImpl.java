@@ -1,15 +1,26 @@
 package com.spring.product.integrator.impl;
 
+import com.spring.product.entity.ProductTypeEntity;
 import com.spring.product.integrator.ProductTypeIntegrator;
 import com.spring.product.model.ProductTypeSuccessResponse;
+import com.spring.product.repository.ProductTypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class ProductTypeIntegratorImpl implements ProductTypeIntegrator {
+
+    @Autowired
+    ProductTypeRepository productTypeRepository;
+
     @Override
-    public ResponseEntity<ProductTypeSuccessResponse> getProductTypeIntegrator() {
-        System.out.println("getting product type integrator");
-        return null;
+    public List<ProductTypeEntity> getProductTypeIntegrator() {
+        List<ProductTypeEntity> getProduct = productTypeRepository.findAll();
+        var getData = getProduct.stream().collect(Collectors.toList());
+        return getProduct.stream().collect(Collectors.toList());
     }
 }
