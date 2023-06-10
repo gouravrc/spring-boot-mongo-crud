@@ -11,7 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ProductController {
+@RequestMapping("product/v1/type")
+public class ProductTypesController {
 
     @Autowired
     ProductTypeReadService productTypeService;

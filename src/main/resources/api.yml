@@ -21,6 +21,29 @@ tags:
       description: Find out more
       url: http://swagger.io
 paths:
+  /product-categories:
+    post:
+      summary: create new product categories
+      description: product categories
+      operationId: createProductCategories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategories'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategories'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
   /get-product-type-by-id:
     get:
       tags:
@@ -86,8 +109,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductType'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
 components:
   schemas:
+    ProductCategories:
+      type: object
+      properties:
+        productType:
+          type: String
+          example: fashion wear
+        productTypeId:
+          type: String
+          example: a0362708
+        productCategoryName:
+          type: String
+          example: Top Wear
+        productTrendingScore:
+          type: Integer
+          example: 10
+          description: 0 (very low) - 5(medium) - 10(very high)
+      required:
+        - productType
+        - productTypeId
+        - productCategoryName
+        - productTrendingScore
     ProductType:
       type: object
       properties:
