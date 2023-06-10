@@ -23,8 +23,7 @@ public class ProductController {
 
     @GetMapping("/get-product-types")
     public ResponseEntity<ProductTypeSuccessResponse> getProductTypeData(){
-        productTypeService.getProductType();
-        return null;
+        return productTypeService.getProductType();
     }
 
     @PostMapping("/product-types")

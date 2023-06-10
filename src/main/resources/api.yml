@@ -73,12 +73,12 @@ components:
     ProductTypeSuccessResponse:
       type: object
       properties:
-        id:
+        status:
           type: integer
-          example: 10
-        name:
-          type: string
-          example: fashion wear
-        offer:
-          type: integer
-          example: 10
+          example: 200
+        data:
+          type: object
+          example: {}
+        errors:
+          type: object
+          example: {}

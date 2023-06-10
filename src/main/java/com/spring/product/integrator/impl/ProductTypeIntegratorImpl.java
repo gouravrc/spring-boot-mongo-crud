@@ -20,7 +20,6 @@ public class ProductTypeIntegratorImpl implements ProductTypeIntegrator {
     @Override
     public List<ProductTypeEntity> getProductTypeIntegrator() {
         List<ProductTypeEntity> getProduct = productTypeRepository.findAll();
-        var getData = getProduct.stream().collect(Collectors.toList());
         return getProduct.stream().collect(Collectors.toList());
     }
 }
