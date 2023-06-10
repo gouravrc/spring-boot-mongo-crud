@@ -1,15 +1,13 @@
 package com.spring.product.service.impl;
 
 import com.spring.product.integrator.ProductTypeCreateIntegrator;
-import com.spring.product.integrator.ProductTypeIntegrator;
 import com.spring.product.model.ProductType;
-import com.spring.product.service.ProductTypeWriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductTypeCreateServiceImpl implements ProductTypeWriteService {
+public class ProductTypeWriteService implements com.spring.product.service.ProductTypeWriteService {
 
     @Autowired
     ProductTypeCreateIntegrator productTypeCreateIntegrator;
