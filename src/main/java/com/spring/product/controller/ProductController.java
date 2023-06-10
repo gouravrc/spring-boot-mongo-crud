@@ -2,8 +2,8 @@ package com.spring.product.controller;
 
 import com.spring.product.model.ProductType;
 import com.spring.product.model.ProductTypeSuccessResponse;
-import com.spring.product.service.ProductTypeCreateService;
-import com.spring.product.service.ProductTypeService;
+import com.spring.product.service.ProductTypeWriteService;
+import com.spring.product.service.ProductTypeReadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductController {
 
     @Autowired
-    ProductTypeService productTypeService;
+    ProductTypeReadService productTypeService;
 
     @Autowired
-    ProductTypeCreateService productTypeCreateService;
+    ProductTypeWriteService productTypeCreateService;
 
     @GetMapping("/get-product-types")
     public ResponseEntity<ProductTypeSuccessResponse> getProductTypeData(){
