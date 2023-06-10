@@ -2,6 +2,7 @@ package com.spring.product.controller;
 
 import com.spring.product.model.ProductType;
 import com.spring.product.model.ProductTypeSuccessResponse;
+import com.spring.product.service.ProductTypeByIdService;
 import com.spring.product.service.ProductTypeWriteService;
 import com.spring.product.service.ProductTypeReadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class ProductController {
     @Autowired
     ProductTypeWriteService productTypeCreateService;
 
+    @Autowired
+    ProductTypeByIdService productTypeByIdService;
+
     @GetMapping("/get-product-types")
     public ResponseEntity<ProductTypeSuccessResponse> getProductTypeData(){
         return productTypeService.getProductType();
@@ -31,7 +35,7 @@ public class ProductController {
 
     @GetMapping("/get-product-type-by-id/{id}")
     public ResponseEntity<ProductTypeSuccessResponse> getProductById(@PathVariable("id") String id){
-        System.out.println(id);
-        return null;
+
+        return productTypeByIdService.getProductTypeById(id);
     }
 }
