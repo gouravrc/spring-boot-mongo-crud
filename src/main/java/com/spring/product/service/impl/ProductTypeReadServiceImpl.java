@@ -26,13 +26,18 @@ public class ProductTypeReadServiceImpl implements com.spring.product.service.Pr
                 productTypeSuccessResponse.setStatus(200);
                 productTypeSuccessResponse.setData(getProductList);
                 productTypeSuccessResponse.errors(null);
+                return new ResponseEntity<>(productTypeSuccessResponse, HttpStatus.OK);
             }
+            productTypeSuccessResponse.setStatus(200);
+            productTypeSuccessResponse.setData("No Records Found");
+            productTypeSuccessResponse.errors(null);
+            return new ResponseEntity<>(productTypeSuccessResponse, HttpStatus.OK);
         }
         catch (Exception error){
             productTypeSuccessResponse.setStatus(400);
             productTypeSuccessResponse.setData(null);
             productTypeSuccessResponse.errors(error);
+            return new ResponseEntity<>(productTypeSuccessResponse, HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(productTypeSuccessResponse, HttpStatus.OK);
     }
 }
