@@ -44,6 +44,26 @@ paths:
           description: Product not found
         '405':
           description: Validation exception
+  /get-product-categories:
+    get:
+      tags:
+        - product categories
+      summary: Get product categories
+      description: GGet all the product categories
+      operationId: getProductCategories
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategoriesSuccessResponse'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
   /get-product-type-by-id:
     get:
       tags:
@@ -148,6 +168,18 @@ components:
           type: integer
           example: 10
     ProductTypeSuccessResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        data:
+          type: object
+          example: {}
+        errors:
+          type: object
+          example: {}
+    ProductCategoriesSuccessResponse:
       type: object
       properties:
         status:

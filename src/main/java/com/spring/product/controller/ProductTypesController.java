@@ -1,5 +1,7 @@
 package com.spring.product.controller;
 
+import com.spring.product.ProductTypeApiController;
+import com.spring.product.ProductTypeApiDelegate;
 import com.spring.product.model.ProductType;
 import com.spring.product.model.ProductTypeSuccessResponse;
 import com.spring.product.service.ProductTypeByIdService;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("product/v1/type")
-public class ProductTypesController {
+public class ProductTypesController extends ProductTypeApiController {
 
     @Autowired
     ProductTypeReadService productTypeService;
@@ -22,6 +24,10 @@ public class ProductTypesController {
 
     @Autowired
     ProductTypeByIdService productTypeByIdService;
+
+    public ProductTypesController(ProductTypeApiDelegate delegate) {
+        super(delegate);
+    }
 
     @GetMapping("/get-product-types")
     public ResponseEntity<ProductTypeSuccessResponse> getProductTypeData(){
