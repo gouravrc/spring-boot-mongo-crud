@@ -21,6 +21,30 @@ tags:
       description: Find out more
       url: http://swagger.io
 paths:
+  /create-product:
+    post:
+      summary: create new product
+      description: create new product under relevant product category
+      operationId: createProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
+
   /product-categories:
     post:
       summary: create new product categories
@@ -137,6 +161,73 @@ paths:
           description: Validation exception
 components:
   schemas:
+    Product:
+      type: Object
+      properties:
+        productType:
+          type: String
+          example: fashion wear
+        productTypeId:
+          type: String
+          example: a0362708
+        productCategoryName:
+          type: String
+          example: Top Wear
+        productCategoryId:
+          type: String
+          example: akd6743
+        productTrendingScore:
+          type: Integer
+          example: 10
+          description: 0 (very low) - 5(medium) - 10(very high)
+        productName:
+          type: String
+          example: T Shirt
+        productBrand:
+          type: String
+          example: H&M
+        productBrandId:
+          type: String
+          example: absc3455
+        productColor:
+          type: String
+          example: Pink
+        productColorId:
+          type: String
+          example: 32acds
+        productTexture:
+          type: String
+          example: cotton blend
+        productTextureId:
+          type: String
+          example: asxsd23
+        productActualPrice:
+          type: String
+          example: 1100
+        productSellingPrice:
+          type: String
+          example: 700
+        productCurrencyCode:
+          type: String
+          example: Rupee
+        productTotalPurchase:
+          type: Integer
+          example: 1111
+        productTotalReviews:
+          type: Integer
+          example: 111
+        productRatings:
+          type: Integer
+          example: 4.5
+        productReturn:
+          type: boolean
+          example: true
+        sellerVendorName:
+          type: String
+          example: ABC Pvt Ltd
+        productAvailableInStock:
+          type: boolean
+          example: False
     ProductCategories:
       type: object
       properties:
