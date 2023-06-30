@@ -44,7 +44,6 @@ paths:
           description: Product not found
         '405':
           description: Validation exception
-
   /product-categories:
     post:
       summary: create new product categories

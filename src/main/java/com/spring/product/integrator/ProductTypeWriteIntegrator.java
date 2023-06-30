@@ -4,6 +4,6 @@ import com.spring.product.model.ProductType;
 import org.springframework.http.ResponseEntity;
 
 public interface ProductTypeWriteIntegrator {
-    public ResponseEntity<ProductType> createProductTypeIntegrator(ProductType productType);
+    ResponseEntity<ProductType> createProductTypeIntegrator(ProductType productType);
 
 }
