@@ -6,16 +6,21 @@ import com.spring.product.integrator.ProductCreateIntegrator;
 import com.spring.product.model.Product;
 import com.spring.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
+@Component
 public class ProductCreateIntegratorImpl implements ProductCreateIntegrator {
 
     @Autowired
     ProductRepository productRepository;
     @Override
-    public ResponseEntity<Product> createProduct(Product product) {
+    public ResponseEntity<ProductEntity> createProduct(Product product) {
+
+        try{
 
         ProductEntity productEntity = new ProductEntity();
         productEntity.setProductId(UUID.randomUUID().toString());
@@ -42,6 +47,11 @@ public class ProductCreateIntegratorImpl implements ProductCreateIntegrator {
         productEntity.setProductAvailableInStock(product.getProductAvailableInStock());
         productRepository.save(productEntity);
 
-        return null;
+        return new ResponseEntity<>(productEntity, HttpStatus.OK);
+        }
+        catch (Exception error){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
     }
 }

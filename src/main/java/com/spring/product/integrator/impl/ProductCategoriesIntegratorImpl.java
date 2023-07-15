@@ -9,7 +9,6 @@ import com.spring.product.repository.ProductTypeRepository;
 import com.spring.product.utils.GlobalErrorUitilty;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class ProductCategoriesIntegratorImpl implements ProductCategoriesIntegra
 
     @SneakyThrows
     @Override
-    public ResponseEntity<ProductCategories> createProductCategory(ProductCategories productCategories) {
+    public void createProductCategory(ProductCategories productCategories) {
         ProductCategoryEntity productCategoryEntity = new ProductCategoryEntity();
         Optional<ProductTypeEntity> isProductTypeIdExist = productTypeRepository.findById(productCategories.getProductTypeId());
         String isProductCategoryNameExist = productCategoryRepository.findByProductCategoryName(productCategories.getProductCategoryName());
@@ -51,7 +50,6 @@ public class ProductCategoriesIntegratorImpl implements ProductCategoriesIntegra
         else{
             throw new GlobalErrorUitilty("Product Type ID does not exist");
         }
-        return null;
     }
 
     @Override
