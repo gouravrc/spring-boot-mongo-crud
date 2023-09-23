@@ -21,6 +21,33 @@ tags:
       description: Find out more
       url: http://swagger.io
 paths:
+  /get-product:
+    get:
+      tags:
+        - get products
+      summary: This endpoint return products
+      description: Get by Id or All
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          description: ID of product
+          required: false
+          schema:
+            type: String
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductSuccessResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Record not found
+        '405':
+          description: Validation exception
   /create-product:
     post:
       summary: create new product
@@ -160,6 +187,76 @@ paths:
           description: Validation exception
 components:
   schemas:
+    GetProductSuccessResponse:
+      type: object
+      properties:
+        id:
+          type: String
+          example: 12334
+        productType:
+          type: String
+          example: fashion wear
+        productTypeId:
+          type: String
+          example: a0362708
+        productCategoryName:
+          type: String
+          example: Top Wear
+        productCategoryId:
+          type: String
+          example: akd6743
+        productTrendingScore:
+          type: Integer
+          example: 10
+          description: 0 (very low) - 5(medium) - 10(very high)
+        productName:
+          type: String
+          example: T Shirt
+        productBrand:
+          type: String
+          example: H&M
+        productBrandId:
+          type: String
+          example: absc3455
+        productColor:
+          type: String
+          example: Pink
+        productColorId:
+          type: String
+          example: 32acds
+        productTexture:
+          type: String
+          example: cotton blend
+        productTextureId:
+          type: String
+          example: asxsd23
+        productActualPrice:
+          type: String
+          example: 1100
+        productSellingPrice:
+          type: String
+          example: 700
+        productCurrencyCode:
+          type: String
+          example: Rupee
+        productTotalPurchase:
+          type: Integer
+          example: 1111
+        productTotalReviews:
+          type: Integer
+          example: 111
+        productRatings:
+          type: Integer
+          example: 4.5
+        productReturn:
+          type: boolean
+          example: true
+        sellerVendorName:
+          type: String
+          example: ABC Pvt Ltd
+        productAvailableInStock:
+          type: boolean
+          example: False
     Product:
       type: Object
       properties:
