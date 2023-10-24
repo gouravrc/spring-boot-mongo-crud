@@ -21,7 +21,7 @@ tags:
       description: Find out more
       url: http://swagger.io
 paths:
-  /get-product:
+  /get-product{id}:
     get:
       tags:
         - get products
@@ -31,10 +31,10 @@ paths:
       parameters:
         - name: id
           in: path
+          required: true
           description: ID of product
-          required: false
           schema:
-            type: String
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -114,7 +114,7 @@ paths:
           description: Product not found
         '405':
           description: Validation exception
-  /get-product-type-by-id:
+  /get-product-type-by-id{id}:
     get:
       tags:
         - get by product id
@@ -127,7 +127,7 @@ paths:
           description: ID of product
           required: true
           schema:
-            type: String
+            type: string
       responses:
         '200':
           description: Successful operation
@@ -191,135 +191,135 @@ components:
       type: object
       properties:
         id:
-          type: String
+          type: string
           example: 12334
         productType:
-          type: String
+          type: string
           example: fashion wear
         productTypeId:
-          type: String
+          type: string
           example: a0362708
         productCategoryName:
-          type: String
+          type: string
           example: Top Wear
         productCategoryId:
-          type: String
+          type: string
           example: akd6743
         productTrendingScore:
-          type: Integer
+          type: integer
           example: 10
           description: 0 (very low) - 5(medium) - 10(very high)
         productName:
-          type: String
+          type: string
           example: T Shirt
         productBrand:
-          type: String
+          type: string
           example: H&M
         productBrandId:
-          type: String
+          type: string
           example: absc3455
         productColor:
-          type: String
+          type: string
           example: Pink
         productColorId:
-          type: String
+          type: string
           example: 32acds
         productTexture:
-          type: String
+          type: string
           example: cotton blend
         productTextureId:
-          type: String
+          type: string
           example: asxsd23
         productActualPrice:
-          type: String
+          type: string
           example: 1100
         productSellingPrice:
-          type: String
+          type: string
           example: 700
         productCurrencyCode:
-          type: String
+          type: string
           example: Rupee
         productTotalPurchase:
-          type: Integer
+          type: integer
           example: 1111
         productTotalReviews:
-          type: Integer
+          type: integer
           example: 111
         productRatings:
-          type: Integer
+          type: integer
           example: 4.5
         productReturn:
           type: boolean
           example: true
         sellerVendorName:
-          type: String
+          type: string
           example: ABC Pvt Ltd
         productAvailableInStock:
           type: boolean
           example: False
     Product:
-      type: Object
+      type: object
       properties:
         productType:
-          type: String
+          type: string
           example: fashion wear
         productTypeId:
-          type: String
+          type: string
           example: a0362708
         productCategoryName:
-          type: String
+          type: string
           example: Top Wear
         productCategoryId:
-          type: String
+          type: string
           example: akd6743
         productTrendingScore:
-          type: Integer
+          type: integer
           example: 10
           description: 0 (very low) - 5(medium) - 10(very high)
         productName:
-          type: String
+          type: string
           example: T Shirt
         productBrand:
-          type: String
+          type: string
           example: H&M
         productBrandId:
-          type: String
+          type: string
           example: absc3455
         productColor:
-          type: String
+          type: string
           example: Pink
         productColorId:
-          type: String
+          type: string
           example: 32acds
         productTexture:
-          type: String
+          type: string
           example: cotton blend
         productTextureId:
-          type: String
+          type: string
           example: asxsd23
         productActualPrice:
-          type: String
+          type: string
           example: 1100
         productSellingPrice:
-          type: String
+          type: string
           example: 700
         productCurrencyCode:
-          type: String
+          type: string
           example: Rupee
         productTotalPurchase:
-          type: Integer
+          type: integer
           example: 1111
         productTotalReviews:
-          type: Integer
+          type: integer
           example: 111
         productRatings:
-          type: Integer
+          type: integer
           example: 4.5
         productReturn:
           type: boolean
           example: true
         sellerVendorName:
-          type: String
+          type: string
           example: ABC Pvt Ltd
         productAvailableInStock:
           type: boolean
@@ -328,16 +328,16 @@ components:
       type: object
       properties:
         productType:
-          type: String
+          type: string
           example: fashion wear
         productTypeId:
-          type: String
+          type: string
           example: a0362708
         productCategoryName:
-          type: String
+          type: string
           example: Top Wear
         productTrendingScore:
-          type: Integer
+          type: integer
           example: 10
           description: 0 (very low) - 5(medium) - 10(very high)
       required:
