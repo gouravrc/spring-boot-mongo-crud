@@ -21,12 +21,132 @@ tags:
       description: Find out more
       url: http://swagger.io
 paths:
+  /get-product{id}:
+    get:
+      tags:
+        - get products
+      summary: This endpoint return products
+      description: Get by Id or All
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of product
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetProductSuccessResponse'
+        '400':
+          description: Bad Request
+        '404':
+          description: Record not found
+        '405':
+          description: Validation exception
+  /create-product:
+    post:
+      summary: create new product
+      description: create new product under relevant product category
+      operationId: createProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
+  /product-categories:
+    post:
+      summary: create new product categories
+      description: product categories
+      operationId: createProductCategories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductCategories'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategories'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
+  /get-product-categories:
+    get:
+      tags:
+        - product categories
+      summary: Get product categories
+      description: GGet all the product categories
+      operationId: getProductCategories
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductCategoriesSuccessResponse'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
+  /get-product-type-by-id{id}:
+    get:
+      tags:
+        - get by product id
+      summary: Get product details by specific product id
+      description: Get by id
+      operationId: getProductTypeById
+      parameters:
+        - name: id
+          in: path
+          description: ID of product
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductTypeSuccessResponse'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
   /get-product-type:
     get:
       tags:
-        - pet
+        - get all
       summary: Get list of product type
-      description:  Get list of product type
+      description:  Get all list of product type
       operationId: getProductType
       responses:
         '200':
@@ -38,7 +158,7 @@ paths:
         '400':
           description: Invalid ID supplied
         '404':
-          description: Pet not found
+          description: Product not found
         '405':
           description: Validation exception
   /product-type:
@@ -59,8 +179,172 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProductType'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Product not found
+        '405':
+          description: Validation exception
 components:
   schemas:
+    GetProductSuccessResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 12334
+        productType:
+          type: string
+          example: fashion wear
+        productTypeId:
+          type: string
+          example: a0362708
+        productCategoryName:
+          type: string
+          example: Top Wear
+        productCategoryId:
+          type: string
+          example: akd6743
+        productTrendingScore:
+          type: integer
+          example: 10
+          description: 0 (very low) - 5(medium) - 10(very high)
+        productName:
+          type: string
+          example: T Shirt
+        productBrand:
+          type: string
+          example: H&M
+        productBrandId:
+          type: string
+          example: absc3455
+        productColor:
+          type: string
+          example: Pink
+        productColorId:
+          type: string
+          example: 32acds
+        productTexture:
+          type: string
+          example: cotton blend
+        productTextureId:
+          type: string
+          example: asxsd23
+        productActualPrice:
+          type: string
+          example: 1100
+        productSellingPrice:
+          type: string
+          example: 700
+        productCurrencyCode:
+          type: string
+          example: Rupee
+        productTotalPurchase:
+          type: integer
+          example: 1111
+        productTotalReviews:
+          type: integer
+          example: 111
+        productRatings:
+          type: integer
+          example: 4.5
+        productReturn:
+          type: boolean
+          example: true
+        sellerVendorName:
+          type: string
+          example: ABC Pvt Ltd
+        productAvailableInStock:
+          type: boolean
+          example: False
+    Product:
+      type: object
+      properties:
+        productType:
+          type: string
+          example: fashion wear
+        productTypeId:
+          type: string
+          example: a0362708
+        productCategoryName:
+          type: string
+          example: Top Wear
+        productCategoryId:
+          type: string
+          example: akd6743
+        productTrendingScore:
+          type: integer
+          example: 10
+          description: 0 (very low) - 5(medium) - 10(very high)
+        productName:
+          type: string
+          example: T Shirt
+        productBrand:
+          type: string
+          example: H&M
+        productBrandId:
+          type: string
+          example: absc3455
+        productColor:
+          type: string
+          example: Pink
+        productColorId:
+          type: string
+          example: 32acds
+        productTexture:
+          type: string
+          example: cotton blend
+        productTextureId:
+          type: string
+          example: asxsd23
+        productActualPrice:
+          type: string
+          example: 1100
+        productSellingPrice:
+          type: string
+          example: 700
+        productCurrencyCode:
+          type: string
+          example: Rupee
+        productTotalPurchase:
+          type: integer
+          example: 1111
+        productTotalReviews:
+          type: integer
+          example: 111
+        productRatings:
+          type: integer
+          example: 4.5
+        productReturn:
+          type: boolean
+          example: true
+        sellerVendorName:
+          type: string
+          example: ABC Pvt Ltd
+        productAvailableInStock:
+          type: boolean
+          example: False
+    ProductCategories:
+      type: object
+      properties:
+        productType:
+          type: string
+          example: fashion wear
+        productTypeId:
+          type: string
+          example: a0362708
+        productCategoryName:
+          type: string
+          example: Top Wear
+        productTrendingScore:
+          type: integer
+          example: 10
+          description: 0 (very low) - 5(medium) - 10(very high)
+      required:
+        - productType
+        - productTypeId
+        - productCategoryName
+        - productTrendingScore
     ProductType:
       type: object
       properties:
@@ -73,12 +357,24 @@ components:
     ProductTypeSuccessResponse:
       type: object
       properties:
-        id:
+        status:
           type: integer
-          example: 10
-        name:
-          type: string
-          example: fashion wear
-        offer:
+          example: 200
+        data:
+          type: object
+          example: {}
+        errors:
+          type: object
+          example: {}
+    ProductCategoriesSuccessResponse:
+      type: object
+      properties:
+        status:
           type: integer
-          example: 10
+          example: 200
+        data:
+          type: object
+          example: {}
+        errors:
+          type: object
+          example: {}
